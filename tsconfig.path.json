@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    "baseUrl": "./src",
+    "paths": {
+      "@tests-utils": ["tests-utils"],
+      "@tests-utils/*": ["tests-utils/*"],
+      "@atoms": ["view/atoms"],
+      "@atoms/*": ["view/atoms/*"],
+      "@molecules": ["view/molecules"],
+      "@molecules/*": ["view/molecules/*"],
+      "@organisms": ["view/organisms"],
+      "@organisms/*": ["view/organisms/*"],
+      "@layout": ["view/layout"],
+      "@layout/*": ["view/layout/*"],
+      "@pages": ["view/pages"],
+      "@pages/*": ["view/pages/*"],
+      "@static": ["view/static"],
+      "@static/*": ["view/static/*"],
+      "@hooks": ["hooks"],
+      "@hooks/*": ["hooks/*"]
+    }
+  }
+}
