@@ -23,6 +23,7 @@ module.exports = {
       '@pages': path.resolve(__dirname, '../src/view/pages'),
       '@static': path.resolve(__dirname, '../src/view/static'),
       '@hooks': path.resolve(__dirname, '../src/hooks'),
+      '@store': path.resolve(__dirname, '../src/store'),
     };
     return config;
   },

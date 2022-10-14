@@ -1,3 +1,3 @@
-import { Button } from '@atoms/Button';
+import { Auth } from '@pages/Auth';
 
-export const App = () => <Button>Click</Button>;
+export const App = () => <Auth />;

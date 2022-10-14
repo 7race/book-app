@@ -2,8 +2,8 @@ import 'styled-components';
 
 interface ITheme {
   colors: {
-    white: string;
-    black: string;
+    primary: string;
+    primaryDark: string;
   };
   media: {
     mobile: string;
