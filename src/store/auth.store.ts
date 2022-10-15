@@ -4,6 +4,10 @@ import type { LoginRequest, AuthService } from '../services/auth.service';
 export class AuthStore {
   private authenticated = false;
 
+  private setAuthenticated(authenticated: boolean) {
+    this.authenticated = authenticated;
+  }
+
   constructor(private readonly authService: AuthService) {
     makeAutoObservable(this);
     this.authenticated = !!localStorage.getItem('access_token');
@@ -13,15 +17,17 @@ export class AuthStore {
     try {
       const token = await this.authService.login(loginRequest);
 
-      localStorage.setItem('access_token', token.access_token);
+      localStorage.setItem('access_token', token.token);
       this.setAuthenticated(true);
     } catch (err) {
       this.setAuthenticated(false);
+      throw err;
     }
   }
 
-  private setAuthenticated(authenticated: boolean) {
-    this.authenticated = authenticated;
+  logOut() {
+    this.setAuthenticated(false);
+    localStorage.removeItem('access_token');
   }
 
   getAccessToken() {
