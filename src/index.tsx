@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { ThemeProvider } from 'styled-components';
-import { createBrowserRouter, RouterProvider, Route } from 'react-router-dom';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { Main } from '@pages/Main';
 import { NotFound404 } from '@pages/NotFound404';
 import { AuthPage } from '@pages/AuthPage';

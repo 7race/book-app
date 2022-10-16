@@ -15,4 +15,10 @@ export const Button = styled.button`
   &:active {
     transform: scale(0.9);
   }
+
+  &:disabled {
+    background-color: grey;
+    cursor: default;
+    pointer-events: none;
+  }
 `;
