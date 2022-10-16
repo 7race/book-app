@@ -20,8 +20,8 @@ const router = createBrowserRouter([
     errorElement: <NotFound404 />,
     children: [
       {
-        path: 'contacts/:id',
-        element: <h1>contact</h1>,
+        path: 'search',
+        element: <h1>Search</h1>,
       },
     ],
   },

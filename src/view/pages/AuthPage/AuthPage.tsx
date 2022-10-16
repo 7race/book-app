@@ -1,4 +1,4 @@
-import { AuthForm } from '@organisms/AuthForm';
+import { AuthForm } from '@pages/AuthPage/AuthForm';
 import { StoreContext } from '@store/store.context';
 import { Navigate } from 'react-router-dom';
 import { useContext } from 'react';
