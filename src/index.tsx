@@ -5,6 +5,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { Main } from '@pages/Main';
 import { NotFound404 } from '@pages/NotFound404';
 import { AuthPage } from '@pages/AuthPage';
+import { SearchBook } from '@pages/Main/SearchBook/SearchBook';
 import { GlobalStyle } from './styles/global';
 import { theme } from './styles/theme';
 import { PrivateRoute } from './routes/PrivateRoute';
@@ -21,7 +22,7 @@ const router = createBrowserRouter([
     children: [
       {
         path: 'search',
-        element: <h1>Search</h1>,
+        element: <SearchBook />,
       },
     ],
   },

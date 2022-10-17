@@ -2,7 +2,7 @@ import { createContext } from 'react';
 import { BooksService } from '../services/books.service';
 import { AuthService } from '../services/auth.service';
 import { AuthStore } from '../store/auth.store';
-import { BooksStore } from './book.store';
+import { BooksStore } from './books.store';
 
 type StoreContextProps = {
   authStore: AuthStore;

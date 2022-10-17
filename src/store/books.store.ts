@@ -1,4 +1,4 @@
-import { makeAutoObservable } from 'mobx';
+import { makeAutoObservable, runInAction } from 'mobx';
 import { BooksService } from 'services/books.service';
 
 type BookItem = {
@@ -16,16 +16,19 @@ type BookItem = {
 
 export class BooksStore {
   books: BookItem[] = [];
+
   constructor(private readonly booksService: BooksService) {
     makeAutoObservable(this);
   }
 
-  async getBooks(bookName: string) {
+  getBooks = async (bookName: string) => {
     try {
       const books = await this.booksService.getBooks(bookName);
-      this.books = [...books];
+      runInAction(() => {
+        this.books = [...books.items];
+      });
     } catch (err) {
       throw err;
     }
-  }
+  };
 }
