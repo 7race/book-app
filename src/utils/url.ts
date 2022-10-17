@@ -1,1 +1,4 @@
-export const API_URL = 'https://reqres.in';
+export enum BaseURL {
+  AUTH = 'https://reqres.in',
+  BOOKS = 'https://www.googleapis.com',
+}

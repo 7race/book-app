@@ -1,4 +1,4 @@
-import { API_URL } from '../utils/url';
+import { BaseURL } from '../utils/url';
 
 export type LoginRequest = {
   readonly email: string;
@@ -7,7 +7,7 @@ export type LoginRequest = {
 
 export class AuthService {
   async login(loginRequest: LoginRequest) {
-    const response = await fetch(`${API_URL}/api/login`, {
+    const response = await fetch(`${BaseURL.AUTH}/api/login`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
