@@ -1,6 +1,8 @@
 import { StoreContext } from '@store/store.context';
 import { observer } from 'mobx-react-lite';
 import { useContext } from 'react';
+import { BookCard } from '@organisms';
+import * as S from './SearchBookConteiner.styled';
 
 export const SearchBook = observer(() => {
   const { booksStore } = useContext(StoreContext);
@@ -12,16 +14,12 @@ export const SearchBook = observer(() => {
 
   return (
     <>
-      <ul>
+      <S.SearchBookContainer>
         {books.length &&
           books.map(({ id, volumeInfo }) => (
-            <li key={id}>
-              <div>{volumeInfo.title}</div>
-              <img src={volumeInfo.imageLinks.smallThumbnail} alt='books img' />
-              <div>{volumeInfo.description}</div>
-            </li>
+            <BookCard key={id} imgUrl={volumeInfo.imageLinks.smallThumbnail} title={volumeInfo.title} />
           ))}
-      </ul>
+      </S.SearchBookContainer>
       <button onClick={requestBooks}>click</button>
     </>
   );
