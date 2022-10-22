@@ -22,24 +22,8 @@ export const SearchBook = observer(() => {
     star: false,
   });
 
-  // const getBooksFromLocalStorage = () => {
-  //   const books = localStorage.getItem('books');
-  //   if (books) {
-  //     return JSON.parse(books);
-  //   } else {
-  //     return [];
-  //   }
-  // };
-
-  // const [books, setBooks] = useState<BookItem[]>(getBooksFromLocalStorage);
-
   const requestBooks = async () => {
     await getBooks('java');
-    // setBooksInLocalStorage();
-    // const books = getBooksFromLocalStorage();
-    // setBooks(books);
-
-    // setBooks(JSON.parse(books));
   };
 
   const handleClose = () => setOpen(false);

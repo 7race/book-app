@@ -3,6 +3,7 @@ import StarIcon from '@mui/icons-material/Star';
 import StarBorderIcon from '@mui/icons-material/StarBorder';
 import { useContext, useState } from 'react';
 import { StoreContext } from '@store/store.context';
+import { getItemFromLocalStorage } from '../../../helpers/localStorage';
 import * as S from './BookCardInfo.styled';
 
 export type BookVolumeInfo = BookItem['volumeInfo'];
@@ -13,14 +14,50 @@ export const BookCardInfo = ({ id, title, authors, imageLinks, description, info
 
   const [isFavorite, setIsFavorite] = useState(star);
 
-  const setFavorite = () => {
+  const setFavorite = (
+    id: string,
+    title: string,
+    imageLinks: {
+      smallThumbnail: string;
+      thumbnail: string;
+    }
+  ) => {
     setFavorites(id);
     setIsFavorite(true);
+
+    const books = getItemFromLocalStorage('books');
+
+    if (Array.isArray(books)) {
+      books.push({ id, title, imageLinks });
+      const uniqueIds: string[] = [];
+
+      const savedBooks = books.filter((book) => {
+        const isDuplicate = uniqueIds.includes(book.id);
+
+        if (!isDuplicate) {
+          uniqueIds.push(book.id);
+          return true;
+        }
+        return false;
+      });
+
+      localStorage.setItem('books', JSON.stringify(savedBooks));
+    } else {
+      localStorage.setItem('books', `[${JSON.stringify({ id, title, imageLinks })}]`);
+    }
   };
 
-  const removeFavorite = () => {
+  const removeFavorite = (id: string) => {
     removeFavorites(id);
     setIsFavorite(false);
+
+    const books = getItemFromLocalStorage('books');
+    if (Array.isArray(books)) {
+      const newBooks = books.filter((book) => book.id !== id);
+      localStorage.setItem('books', JSON.stringify(newBooks));
+    } else {
+      return;
+    }
   };
 
   return (
@@ -35,9 +72,9 @@ export const BookCardInfo = ({ id, title, authors, imageLinks, description, info
               more
             </S.Link>
             {isFavorite ? (
-              <StarIcon sx={S.Star} onClick={removeFavorite} />
+              <StarIcon sx={S.Star} onClick={() => removeFavorite(id)} />
             ) : (
-              <StarBorderIcon sx={S.Star} onClick={setFavorite} />
+              <StarBorderIcon sx={S.Star} onClick={() => setFavorite(id, title, imageLinks)} />
             )}
           </S.SubContainer>
         </S.Name>
