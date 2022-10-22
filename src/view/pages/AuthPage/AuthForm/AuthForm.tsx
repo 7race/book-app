@@ -16,6 +16,7 @@ type FormPorps = {
 
 export const AuthForm: FC<ComponentPropsWithoutRef<'form'>> = observer(() => {
   const [serverError, setServerError] = useState<boolean>(false);
+  const [tooManyErrors, setTooManyErrors] = useState('');
   const { authStore } = useContext(StoreContext);
 
   const navigate = useNavigate();
@@ -29,13 +30,22 @@ export const AuthForm: FC<ComponentPropsWithoutRef<'form'>> = observer(() => {
         navigate('/');
       })
       .catch((err) => {
+        if (err.message.includes('auth/too-many-requests')) {
+          setTooManyErrors(
+            `Access to this account has been temporarily disabled due to many failed login attempts.
+            You can try again later`
+          );
+        } else {
+          setTooManyErrors('');
+        }
+
         setServerError(true);
       });
   };
 
   return (
     <S.Form onSubmit={handleSubmit(onSubmit)}>
-      <span>email: eve.holt@reqres.in // password: cityslicka</span>
+      <span>email: test@mail.ru // password: qaz123</span>
       <Input label='email' variant='outlined' autoComplete='email' {...register('email', { required: true })} />
       <Input
         type='password'
@@ -45,7 +55,8 @@ export const AuthForm: FC<ComponentPropsWithoutRef<'form'>> = observer(() => {
         {...register('password', { required: true })}
       />
       <Button>Submit</Button>
-      {serverError && <div style={{ color: '#572747' }}>Invalid email or password</div>}
+      {serverError && !tooManyErrors && <div style={{ color: '#572747' }}>Invalid email or password</div>}
+      {tooManyErrors && <div style={{ color: '#572747' }}>{tooManyErrors}</div>}
     </S.Form>
   );
 });

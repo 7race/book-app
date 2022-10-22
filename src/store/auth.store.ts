@@ -17,7 +17,7 @@ export class AuthStore {
     try {
       const token = await this.authService.login(loginRequest);
 
-      localStorage.setItem('access_token', token.token);
+      localStorage.setItem('access_token', token);
       this.setAuthenticated(true);
     } catch (err) {
       this.setAuthenticated(false);

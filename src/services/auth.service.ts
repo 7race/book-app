@@ -1,4 +1,5 @@
-import { BaseURL } from '../utils/url';
+import { signInWithEmailAndPassword } from 'firebase/auth';
+import { auth } from '../base';
 
 export type LoginRequest = {
   readonly email: string;
@@ -7,20 +8,14 @@ export type LoginRequest = {
 
 export class AuthService {
   async login(loginRequest: LoginRequest) {
-    const response = await fetch(`${BaseURL.AUTH}/api/login`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(loginRequest),
-    });
+    try {
+      const { email, password } = loginRequest;
+      const res = await signInWithEmailAndPassword(auth, email, password);
+      const token = await res.user.getIdToken();
 
-    const parsedResponse = await response.json();
-
-    if (!response.ok) {
-      throw new Error(parsedResponse);
+      return token;
+    } catch (e) {
+      throw e;
     }
-
-    return parsedResponse;
   }
 }
