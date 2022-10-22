@@ -1,7 +1,7 @@
 import { makeAutoObservable, runInAction } from 'mobx';
 import { BooksService } from 'services/books.service';
 
-type BookItem = {
+export type BookItem = {
   id: string;
   volumeInfo: {
     title: string;
@@ -11,6 +11,9 @@ type BookItem = {
       smallThumbnail: string;
       thumbnail: string;
     };
+    infoLink: string;
+    star: boolean;
+    id: string;
   };
 };
 
@@ -31,4 +34,24 @@ export class BooksStore {
       throw err;
     }
   };
+
+  setFavorites = (id: string) => {
+    this.books.forEach((bookItem) => {
+      if (id === bookItem.id) {
+        bookItem.volumeInfo.star = true;
+      }
+    });
+  };
+
+  removeFavorites = (id: string) => {
+    this.books.forEach((bookItem) => {
+      if (id === bookItem.id) {
+        bookItem.volumeInfo.star = false;
+      }
+    });
+  };
+
+  // setBooksInLocalStorage = () => {
+  //   localStorage.setItem('books', JSON.stringify(this.books));
+  // };
 }

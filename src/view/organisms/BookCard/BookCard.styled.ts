@@ -11,6 +11,7 @@ export const BookCard = styled.div`
   text-align: center;
   cursor: pointer;
   transition: transform 0.3s;
+  position: relative;
 
   &:hover {
     transform: scale(0.9);
@@ -21,3 +22,12 @@ export const BookCard = styled.div`
     display: block;
   }
 `;
+
+export const Star = {
+  color: 'gold',
+  width: '50px',
+  height: '50px',
+  position: 'absolute',
+  right: '-20px',
+  top: '-20px',
+};

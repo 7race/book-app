@@ -7,6 +7,7 @@ export class BooksService {
     );
 
     const parsedResponse = await response.json();
+    parsedResponse.items.map((item: Record<string, { star: boolean }>) => (item.volumeInfo.star = false));
 
     if (!response.ok) {
       throw new Error(parsedResponse);
