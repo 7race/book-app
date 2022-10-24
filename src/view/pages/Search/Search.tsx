@@ -1,5 +1,9 @@
 import { Books } from '@organisms/SearchPage/Books';
+import { SearchBooks } from '@organisms/SearchPage/SearchBooks';
 
-export const Search = () => {
-  return <Books />;
-};
+export const Search = () => (
+  <>
+    <SearchBooks />
+    <Books />
+  </>
+);

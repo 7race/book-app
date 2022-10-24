@@ -10,7 +10,7 @@ import type { BookVolumeInfo } from '../../../modals/BookCardInfo/BookCardInfo';
 
 export const Books = observer(() => {
   const { booksStore } = useContext(StoreContext);
-  const { books, getBooks } = booksStore;
+  const { books } = booksStore;
   const [open, setOpen] = useState(false);
   const [bookInfo, setBookInfo] = useState<BookVolumeInfo>({
     id: '',
@@ -21,10 +21,6 @@ export const Books = observer(() => {
     infoLink: '',
     star: false,
   });
-
-  const requestBooks = async () => {
-    await getBooks('java');
-  };
 
   const handleClose = () => setOpen(false);
 
@@ -44,7 +40,7 @@ export const Books = observer(() => {
           books.map(({ id, volumeInfo }) => (
             <BookCard
               key={id}
-              imgUrl={volumeInfo.imageLinks.smallThumbnail}
+              imgUrl={volumeInfo.imageLinks?.smallThumbnail}
               title={volumeInfo.title}
               star={volumeInfo.star}
               onClick={(e) => showBookInfo(e, id, volumeInfo)}
@@ -62,7 +58,6 @@ export const Books = observer(() => {
           id={bookInfo.id}
         />
       </Dialog>
-      <button onClick={requestBooks}>click</button>
     </>
   );
 });
