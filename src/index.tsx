@@ -2,27 +2,27 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { ThemeProvider } from 'styled-components';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import { Main } from '@pages/Main';
+import { Search } from '@pages/Search';
 import { NotFound404 } from '@pages/NotFound404';
-import { AuthPage } from '@pages/AuthPage';
-import { SearchBook } from '@pages/Main/SearchBookContainer/SearchBook';
+import { AuthPage } from '@pages/Auth';
 import { GlobalStyle } from './styles/global';
 import { theme } from './styles/theme';
 import { PrivateRoute } from './routes/PrivateRoute';
+import { App } from './view/App';
 
 const router = createBrowserRouter([
   {
     path: '/',
     element: (
       <PrivateRoute>
-        <Main />
+        <App />
       </PrivateRoute>
     ),
     errorElement: <NotFound404 />,
     children: [
       {
         path: 'search',
-        element: <SearchBook />,
+        element: <Search />,
       },
     ],
   },

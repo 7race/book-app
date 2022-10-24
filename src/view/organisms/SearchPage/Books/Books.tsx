@@ -1,14 +1,14 @@
 import { StoreContext } from '@store/store.context';
 import { observer } from 'mobx-react-lite';
 import { useContext, useState } from 'react';
-import { BookCard } from '@organisms/BookCard';
-import { BookCardInfo } from '@organisms/BookCardInfo/BookCardInfo';
+import { BookCard } from '@molecules/BookCard';
 import Dialog from '@mui/material/Dialog';
-import * as S from './SearchBookConteiner.styled';
-import type { BookVolumeInfo } from '@organisms/BookCardInfo/BookCardInfo';
+import { BookCardInfo } from '../../../modals/BookCardInfo';
+import * as S from './Books.styled';
 import type { MouseEvent } from 'react';
+import type { BookVolumeInfo } from '../../../modals/BookCardInfo/BookCardInfo';
 
-export const SearchBook = observer(() => {
+export const Books = observer(() => {
   const { booksStore } = useContext(StoreContext);
   const { books, getBooks } = booksStore;
   const [open, setOpen] = useState(false);

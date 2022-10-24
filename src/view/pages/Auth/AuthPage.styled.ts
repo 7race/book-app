@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import bgImg from './static/auth-bg.webp';
+import bgImg from '@atoms/static/auth-bg.webp';
 
 export const Auth = styled.div`
   display: flex;
