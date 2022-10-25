@@ -4,6 +4,8 @@ interface ITheme {
   colors: {
     primary: string;
     primaryDark: string;
+    darkReader: string;
+    bookPrimary: string;
   };
   media: {
     mobile: string;
