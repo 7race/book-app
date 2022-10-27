@@ -33,19 +33,18 @@ export const Books = observer(() => {
     setOpen(true);
   };
 
-  return (
+  return books.length ? (
     <>
       <S.SearchBookContainer>
-        {books.length &&
-          books.map(({ id, volumeInfo }) => (
-            <BookCard
-              key={id}
-              imgUrl={volumeInfo.imageLinks?.smallThumbnail}
-              title={volumeInfo.title}
-              star={volumeInfo.star}
-              onClick={(e) => showBookInfo(e, id, volumeInfo)}
-            />
-          ))}
+        {books.map(({ id, volumeInfo }) => (
+          <BookCard
+            key={id}
+            imgUrl={volumeInfo.imageLinks?.smallThumbnail}
+            title={volumeInfo.title}
+            star={volumeInfo.star}
+            onClick={(e) => showBookInfo(e, id, volumeInfo)}
+          />
+        ))}
       </S.SearchBookContainer>
       <Dialog open={open} onClose={handleClose}>
         <BookCardInfo
@@ -59,5 +58,5 @@ export const Books = observer(() => {
         />
       </Dialog>
     </>
-  );
+  ) : null;
 });

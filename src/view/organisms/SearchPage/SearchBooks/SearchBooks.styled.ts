@@ -18,13 +18,14 @@ export const Container = styled.div`
   justify-content: space-around;
   background-color: ${({ theme }) => theme.colors.darkReader};
   padding: 40px;
+  height: calc(100vh - ${({ theme }) => theme.vars.widthAppHeader});
 `;
 
 export const Row1 = styled.div`
   display: flex;
   align-items: center;
 
-  @media (max-width: 900px) {
+  @media (${({ theme }) => theme.media.tablet}) {
     display: none;
   }
 `;
@@ -34,9 +35,12 @@ export const Row2 = styled.div`
   flex-direction: column;
   gap: 10px;
 
-  @media (max-width: 900px) {
+  @media (${({ theme }) => theme.media.mobile}) {
+    gap: 30px;
     & > img {
-      /* display: none; */
+      width: 270px;
+      height: 270px;
+      align-self: center;
     }
   }
 `;

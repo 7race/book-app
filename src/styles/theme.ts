@@ -8,9 +8,11 @@ export const theme: ITheme = {
     bookPrimary: '#D4B996FF',
   },
   media: {
-    mobile: '(max-width: 768px)',
-    tablet: '(min-width: 768px)',
-    notebook: '(min-width: 1366px)',
-    desktop: '(min-width: 1920px)',
+    mobile: '(max-width: 500px)',
+    tablet: '(max-width: 900px)',
+  },
+
+  vars: {
+    widthAppHeader: '56px',
   },
 };

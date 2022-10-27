@@ -10,8 +10,9 @@ interface ITheme {
   media: {
     mobile: string;
     tablet: string;
-    notebook: string;
-    desktop: string;
+  };
+  vars: {
+    widthAppHeader: string;
   };
 }
 
