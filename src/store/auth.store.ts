@@ -25,8 +25,14 @@ export class AuthStore {
     }
   }
 
+  flag = false;
+  setFlag = () => {
+    this.flag = true;
+  };
+
   logOut() {
     this.setAuthenticated(false);
+    this.flag = false;
     localStorage.removeItem('access_token');
   }
 
@@ -34,7 +40,5 @@ export class AuthStore {
     return localStorage.getItem('access_token');
   }
 
-  isAuthenticated() {
-    return this.authenticated;
-  }
+  isAuthenticated = () => this.authenticated;
 }

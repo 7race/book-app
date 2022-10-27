@@ -13,7 +13,7 @@ export const P = styled.p`
   font-size: 30px;
 `;
 
-export const Containter = styled.div`
+export const Container = styled.div`
   display: flex;
   justify-content: space-around;
   background-color: ${({ theme }) => theme.colors.darkReader};
@@ -23,12 +23,22 @@ export const Containter = styled.div`
 export const Row1 = styled.div`
   display: flex;
   align-items: center;
+
+  @media (max-width: 900px) {
+    display: none;
+  }
 `;
 
 export const Row2 = styled.div`
   display: flex;
   flex-direction: column;
   gap: 10px;
+
+  @media (max-width: 900px) {
+    & > img {
+      /* display: none; */
+    }
+  }
 `;
 
 export const Input = styled.input`
