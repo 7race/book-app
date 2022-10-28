@@ -1,6 +1,6 @@
 import { StoreContext } from '@store/store.context';
 import { observer } from 'mobx-react-lite';
-import { useContext, useState } from 'react';
+import { FC, useContext, useEffect, useState } from 'react';
 import { BookCard } from '@molecules/BookCard';
 import Dialog from '@mui/material/Dialog';
 import { BookCardInfo } from '../../../modals/BookCardInfo';
@@ -8,7 +8,11 @@ import * as S from './Books.styled';
 import type { MouseEvent } from 'react';
 import type { BookVolumeInfo } from '../../../modals/BookCardInfo/BookCardInfo';
 
-export const Books = observer(() => {
+type BooksProps = {
+  scrollToBooks: () => void;
+};
+
+export const Books: FC<BooksProps> = observer(({ scrollToBooks }) => {
   const { booksStore } = useContext(StoreContext);
   const { books } = booksStore;
   const [open, setOpen] = useState(false);
@@ -20,6 +24,10 @@ export const Books = observer(() => {
     description: '',
     infoLink: '',
     star: false,
+  });
+
+  useEffect(() => {
+    scrollToBooks();
   });
 
   const handleClose = () => setOpen(false);
