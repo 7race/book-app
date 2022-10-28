@@ -27,8 +27,13 @@ export class BooksStore {
   getBooks = async (bookName: string) => {
     try {
       const books = await this.booksService.getBooks(bookName);
+
       runInAction(() => {
-        this.books = [...books.items];
+        if (books.items) {
+          this.books = [...books.items];
+        } else {
+          this.books = [];
+        }
       });
     } catch (err) {
       throw err;

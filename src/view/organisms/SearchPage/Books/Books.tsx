@@ -28,7 +28,7 @@ export const Books: FC<BooksProps> = observer(({ scrollToBooks }) => {
 
   useEffect(() => {
     scrollToBooks();
-  });
+  }, [books, scrollToBooks]);
 
   const handleClose = () => setOpen(false);
 
