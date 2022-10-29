@@ -5,6 +5,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { Search } from '@pages/Search';
 import { NotFound404 } from '@pages/NotFound404';
 import { AuthPage } from '@pages/Auth';
+import { Root } from '@pages/Root';
 import { GlobalStyle } from './styles/global';
 import { theme } from './styles/theme';
 import { PrivateRoute } from './routes/PrivateRoute';
@@ -20,6 +21,10 @@ const router = createBrowserRouter([
     ),
     errorElement: <NotFound404 />,
     children: [
+      {
+        path: '/',
+        element: <Root />,
+      },
       {
         path: 'search',
         element: <Search />,
