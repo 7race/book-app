@@ -23,26 +23,24 @@ const router = createBrowserRouter([
     children: [
       {
         path: '/',
-        element: <Root />,
+        element: <Root />
       },
       {
         path: 'search',
-        element: <Search />,
-      },
-    ],
+        element: <Search />
+      }
+    ]
   },
   {
     path: '/auth',
-    element: <AuthPage />,
-  },
+    element: <AuthPage />
+  }
 ]);
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
 root.render(
-  <React.StrictMode>
-    <ThemeProvider theme={theme}>
-      <GlobalStyle />
-      <RouterProvider router={router} />
-    </ThemeProvider>
-  </React.StrictMode>
+  <ThemeProvider theme={theme}>
+    <GlobalStyle />
+    <RouterProvider router={router} />
+  </ThemeProvider>
 );

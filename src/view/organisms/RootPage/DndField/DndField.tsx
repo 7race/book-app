@@ -1,21 +1,19 @@
 import { BookCard } from '@molecules/BookCard';
-import { FC } from 'react';
+import { ComponentPropsWithRef, FC, forwardRef } from 'react';
 import * as S from './DndField.styled';
 
 type DndFieldProps = {
-  children: [
-    {
-      id: string;
-      title: string;
-      imageLinks: { smallThumbnail: string; thumbnail: string };
-    }
-  ];
+  books: {
+    id: string;
+    title: string;
+    imageLinks: { smallThumbnail: string; thumbnail: string };
+  }[];
 };
 
-export const DndField: FC<DndFieldProps> = ({ children }) => (
-  <S.DndField>
-    {children.map((book) => (
+export const DndField: FC<ComponentPropsWithRef<'div'> & DndFieldProps> = forwardRef(({ books, ...rest }, ref) => (
+  <S.DndField {...rest} ref={ref}>
+    {books.map((book) => (
       <BookCard key={book.id} imgUrl={book.imageLinks.thumbnail} title={book.title} />
     ))}
   </S.DndField>
-);
+));

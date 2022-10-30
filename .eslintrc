@@ -7,7 +7,6 @@
     "quotes": ["error", "single"],
     "jsx-quotes": ["error", "prefer-single"],
     "max-len": ["error", { "code": 120 }],
-    "comma-dangle": ["error", { "objects": "always-multiline", "arrays": "always-multiline" }],
     "semi": ["error", "always"],
     "import/order": [
       "error",
