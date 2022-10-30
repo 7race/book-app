@@ -9,4 +9,12 @@ export const SearchBookContainer = styled.div`
   padding-bottom: 25px;
   background: rgb(138, 121, 32);
   background: linear-gradient(90deg, rgba(138, 121, 32, 1) 0%, rgba(245, 137, 32, 1) 42%, rgba(255, 181, 0, 1) 96%);
+
+  & > div {
+    &:hover {
+      cursor: pointer;
+      transition: transform 0.3s;
+      transform: scale(0.9);
+    }
+  }
 `;

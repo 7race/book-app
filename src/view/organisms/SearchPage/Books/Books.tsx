@@ -47,7 +47,7 @@ export const Books: FC<BooksProps> = observer(({ scrollToBooks }) => {
         {books.map(({ id, volumeInfo }) => (
           <BookCard
             key={id}
-            imgUrl={volumeInfo.imageLinks?.smallThumbnail}
+            imgUrl={volumeInfo.imageLinks?.thumbnail}
             title={volumeInfo.title}
             star={volumeInfo.star}
             onClick={(e) => showBookInfo(e, id, volumeInfo)}

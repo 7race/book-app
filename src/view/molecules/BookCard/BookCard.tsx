@@ -5,7 +5,7 @@ import * as S from './BookCard.styled';
 type BookCardProps = {
   imgUrl: string;
   title: string;
-  star: boolean;
+  star?: boolean;
 };
 
 export const BookCard: FC<ComponentPropsWithoutRef<'div'> & BookCardProps> = ({ imgUrl, title, star, ...rest }) =>

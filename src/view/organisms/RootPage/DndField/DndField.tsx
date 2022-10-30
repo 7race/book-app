@@ -1,4 +1,6 @@
+import { BookCard } from '@molecules/BookCard';
 import { FC } from 'react';
+import * as S from './DndField.styled';
 
 type DndFieldProps = {
   children: [
@@ -11,12 +13,9 @@ type DndFieldProps = {
 };
 
 export const DndField: FC<DndFieldProps> = ({ children }) => (
-  <div>
+  <S.DndField>
     {children.map((book) => (
-      <div key={book.id}>
-        <img src={book.imageLinks.smallThumbnail} alt='' />
-        <div>{book.title}</div>
-      </div>
+      <BookCard key={book.id} imgUrl={book.imageLinks.thumbnail} title={book.title} />
     ))}
-  </div>
+  </S.DndField>
 );

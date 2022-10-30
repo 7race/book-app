@@ -9,13 +9,7 @@ export const BookCard = styled.div`
   background-color: #b37700;
   padding: 10px;
   text-align: center;
-  cursor: pointer;
-  transition: transform 0.3s;
   position: relative;
-
-  &:hover {
-    transform: scale(0.9);
-  }
 
   & > img,
   title {
