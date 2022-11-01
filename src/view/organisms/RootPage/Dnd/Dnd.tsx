@@ -1,14 +1,8 @@
 import { useState } from 'react';
 import { DragDropContext, DropResult } from 'react-beautiful-dnd';
-import styled from 'styled-components';
 import { getItemFromLocalStorage } from '../../../../helpers/localStorage';
 import { DroppableElement } from './DroppableElement';
-
-const ListGrid = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-gap: 10px;
-`;
+import * as S from './Dnd.styled';
 
 type Book = {
   id: string;
@@ -18,12 +12,12 @@ type Book = {
 
 export const Dnd = () => {
   const lists = ['reading', 'finished'];
-  const readngBooksFromLS = getItemFromLocalStorage('readingBooks');
+  const readingBooksFromLS = getItemFromLocalStorage('readingBooks');
   const finishedBooksFromLS = getItemFromLocalStorage('finishedBooks');
 
   const getReadingBooks = () => {
-    if (readngBooksFromLS) {
-      return readngBooksFromLS;
+    if (readingBooksFromLS) {
+      return readingBooksFromLS;
     } else {
       return [];
     }
@@ -95,12 +89,14 @@ export const Dnd = () => {
     }
   };
 
-  return (
+  return !readingBooks.length && !finishedBooks.length ? (
+    <S.P>You don't have books now</S.P>
+  ) : (
     <DragDropContext onDragEnd={(result) => onDrag(result)}>
-      <ListGrid>
+      <S.ListGrid>
         <DroppableElement books={readingBooks} prefix={lists[0]} />
         <DroppableElement books={finishedBooks} prefix={lists[1]} />
-      </ListGrid>
+      </S.ListGrid>
     </DragDropContext>
   );
 };
