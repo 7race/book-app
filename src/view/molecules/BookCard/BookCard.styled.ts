@@ -23,5 +23,5 @@ export const Star = {
   height: '50px',
   position: 'absolute',
   right: '-20px',
-  top: '-20px',
+  top: '-20px'
 };

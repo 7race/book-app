@@ -25,13 +25,13 @@ export const BookCardInfo = ({ id, title, authors, imageLinks, description, info
     setFavorites(id);
     setIsFavorite(true);
 
-    const books = getItemFromLocalStorage('books');
+    const books = getItemFromLocalStorage('readingBooks');
 
     if (Array.isArray(books)) {
       books.push({ id, title, imageLinks });
       const uniqueIds: string[] = [];
 
-      const savedBooks = books.filter((book) => {
+      const readingBooks = books.filter((book) => {
         const isDuplicate = uniqueIds.includes(book.id);
 
         if (!isDuplicate) {
@@ -41,9 +41,9 @@ export const BookCardInfo = ({ id, title, authors, imageLinks, description, info
         return false;
       });
 
-      localStorage.setItem('books', JSON.stringify(savedBooks));
+      localStorage.setItem('readingBooks', JSON.stringify(readingBooks));
     } else {
-      localStorage.setItem('books', `[${JSON.stringify({ id, title, imageLinks })}]`);
+      localStorage.setItem('readingBooks', `[${JSON.stringify({ id, title, imageLinks })}]`);
     }
   };
 
@@ -51,10 +51,10 @@ export const BookCardInfo = ({ id, title, authors, imageLinks, description, info
     removeFavorites(id);
     setIsFavorite(false);
 
-    const books = getItemFromLocalStorage('books');
+    const books = getItemFromLocalStorage('readingBooks');
     if (Array.isArray(books)) {
       const newBooks = books.filter((book) => book.id !== id);
-      localStorage.setItem('books', JSON.stringify(newBooks));
+      localStorage.setItem('readingBooks', JSON.stringify(newBooks));
     } else {
       return;
     }

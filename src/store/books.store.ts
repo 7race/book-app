@@ -55,8 +55,4 @@ export class BooksStore {
       }
     });
   };
-
-  // setBooksInLocalStorage = () => {
-  //   localStorage.setItem('books', JSON.stringify(this.books));
-  // };
 }
