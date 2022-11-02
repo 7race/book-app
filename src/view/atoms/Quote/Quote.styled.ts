@@ -14,8 +14,6 @@ const scale = keyframes`
 `;
 
 export const Quote = styled.h1`
-  @import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
-
   font-family: 'Montserrat Medium';
   max-width: 40ch;
   text-align: center;

@@ -23,7 +23,7 @@ export const Books: FC<BooksProps> = observer(({ scrollToBooks }) => {
     imageLinks: { smallThumbnail: '', thumbnail: '' },
     description: '',
     infoLink: '',
-    star: false,
+    star: false
   });
 
   useEffect(() => {
