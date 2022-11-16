@@ -25,7 +25,7 @@ export const Row1 = styled.div`
   display: flex;
   align-items: center;
 
-  @media (${({ theme }) => theme.media.tablet}) {
+  @media ${({ theme }) => theme.media.tablet} {
     display: none;
   }
 `;
@@ -35,7 +35,7 @@ export const Row2 = styled.div`
   flex-direction: column;
   gap: 10px;
 
-  @media (${({ theme }) => theme.media.mobile}) {
+  @media ${({ theme }) => theme.media.mobile} {
     gap: 30px;
     & > img {
       width: 270px;

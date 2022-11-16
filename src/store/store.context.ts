@@ -17,5 +17,5 @@ const booksStore = new BooksStore(booksService);
 
 export const StoreContext = createContext<StoreContextProps>({
   authStore,
-  booksStore,
+  booksStore
 });
